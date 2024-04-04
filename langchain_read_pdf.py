@@ -1,7 +1,7 @@
 from pprint import pprint
 import bs4
 from langchain import hub
-from langchain_community.document_loaders import WebBaseLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import Chroma
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
@@ -18,14 +18,7 @@ LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
 
 llm = ChatOpenAI(model="gpt-3.5-turbo", api_key=OPENAI_API_KEY)
 
-loader = WebBaseLoader(
-    web_paths=("https://lilianweng.github.io/posts/2023-06-23-agent/",),
-    bs_kwargs=dict(
-        parse_only=bs4.SoupStrainer(
-            class_=("post-content", "post-title", "post-header")
-        )
-    ),
-)
+loader = PyPDFLoader("local_data/sci_paper.pdf")
 
 docs = loader.load()
 
@@ -47,7 +40,11 @@ rag_chain = (
     | StrOutputParser()
 )
 
-print(rag_chain.invoke("Can you explain MRKL?"))
+while True:
+    question = input("Ask a question: ")
+    if question == "exit":
+        break
+    print(rag_chain.invoke(question))
 
 
 vectorstore.delete_collection()

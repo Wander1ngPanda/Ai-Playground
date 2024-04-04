@@ -33,3 +33,4 @@ Thumbs.db
 .env
 /venv
 /local_data
+.vscode
