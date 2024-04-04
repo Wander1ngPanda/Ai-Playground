@@ -1,3 +1,5 @@
+'''Open AI Quickstart'''
+
 from openai import OpenAI
 client = OpenAI()
 
