@@ -1,3 +1,9 @@
 AI Playground
 
 This repo is to explore and track my progress in using OpenAi api's and other tools.
+
+I used the OpenAI quickstart to connect and interact with chatgpt through code
+
+I used the langchain quickstart to query a blog
+I then explored the ability to read a single pdf or a directory of pdf's 
+
