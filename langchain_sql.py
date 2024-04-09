@@ -41,7 +41,8 @@ chain = (
     )
     | answer
 )
-response = chain.invoke({"question": input("What would you like to ask the database? ")})
+user_input = input("What would you like to ask the database? ")
+response = chain.invoke({"question": user_input})
 print(response)
 
 

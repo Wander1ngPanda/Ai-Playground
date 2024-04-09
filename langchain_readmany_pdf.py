@@ -37,9 +37,6 @@ if input("Do you want to scrape and download PDF files? (y/n): ") == 'y':
                     if i.endswith('.pdf'):
                         pdf_links.append(i)
 
-    # Download PDF files
-    # Due to the quantity of PDF files, I will not download them all, just the first 10
-
     for i, pdf_link in enumerate(pdf_links[:10]):
         pdf = requests.get(pdf_link)
         pdf_name = pdf_link.split('/')[-1]
